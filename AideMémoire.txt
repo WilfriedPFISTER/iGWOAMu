@@ -1,0 +1,8 @@
+git init
+git add IGWOAMu.java
+git config --global user.email "w.pfister@free.fr"
+git config --global user.name "Wilfried"
+git commit -m "iGWOAMu v0 :)"
+
+git commit -a -m "màj"
+git push -u origin main
