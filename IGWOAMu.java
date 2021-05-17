@@ -3,6 +3,7 @@
  * iGWOAMu = internetable Grid Wise Obscenlightment with Alealetry and Multunicast unit
  * 
  * ----- Concepts clés -----
+ * 
  * iSekNet = infrastructure Sekurit Netswerk = {{Spievel},{Chalot}}
  * Spievel ("miroir" en romanche) = la passerelle permettant à Alice de passer du Clair à l'Obscur grâce à sa clé CAT
  *                                  et à en revenir
@@ -184,16 +185,20 @@ public class IGWOAMu {
         * np               = |{hrk[i], 0<hrk[i]}|*/
         nm = K.length();
         np = 0;
-        nt = K.length();
+        nt = 0;
         nn = 0;
-        nf = K.length();
+        nf = 0;
         nq = K.length();
         ns = K.length();
         ne = K.length();
         for (int i=0; i<nq; i++) {
-            if (hrk[i]<0) nn++;
-            if (hrk[i]>0) np++;
+            if (hrk[i]<0) {nn++; nt++;}
+            if (hrk[i]>0) {np++; nf++;}
         }
+        if (np == 0) np =1;
+        if (nt == 0) nt =1;
+        if (nn == 0) nn =1;
+        if (nf == 0) nf =1;
         if (TRACER) System.out.printf("nm=%d, np=%d, nt=%d, nn=%d, nf=%d, nq=%d, ns=%d, ne=%d\n\n", nm, np, nt, nn, nf, nq, ns, ne);
         
         /* tm[0..nm[        = ((int)tC/nm)+((i<(tC%nm))?1:0)*/
@@ -456,3 +461,89 @@ public class IGWOAMu {
         IGWOAMu igwoamu = new IGWOAMu();
     }
 }
+
+/*
+run:
+C="Bachi-bouzouk ! Moule à gaufres ! Australopithèque !"
+K="Haddock"
+
+Pour les changer entrer de nouvelles valeurs (ou deux retours chariot) :
+
+
+Travail avec
+C="Bachi-bouzouk ! Moule à gaufres ! Australopithèque !"
+K="Haddock"
+0=<iano4ianc(ianc)<tC
+ianc == ianc4iano(iano4ianc(ianc))
+(ianc !=janc) => (ianc4iano(ianc) !=ianc4iano(janc))
+C="Bachi-bouzouk ! Moule à gaufres ! Australopithèque !"
+O="Bo! rupeau àesi czM stt!hoog rhiuua!aè-klu lqb efAou
+E=
+   Bo! rupe
+                         t!hoog r
+                                        è-klu lq
+                                                b efAou
+                   czM st
+                                 hiuua!a
+           au àesi
+E[0]="Bo! rupe"
+E[1]="t!hoog r"
+E[2]="è-klu lq"
+E[3]="b efAou"
+E[4]=" czM st"
+E[5]="hiuua!a"
+E[6]="au àesi"
+É="Bachi-bouzouk ! Moule à gaufres ! Australopithèque !"
+BUILD SUCCESSFUL (total time: 3 seconds)
+*/
+
+/*
+run:
+C="Bachi-bouzouk ! Moule à gaufres ! Australopithèque !"
+K="Haddock"
+
+Pour les changer entrer de nouvelles valeurs (ou deux retours chariot) :
+"La crise économique" ou "Le scénario comique" ?
+Emmanuel Macron
+Travail avec
+C=""La crise économique" ou "Le scénario comique" ?"
+K="Emmanuel Macron"
+0=<iano4ianc(ianc)<tC
+ianc == ianc4iano(iano4ianc(ianc))
+(ianc !=janc) => (ianc4iano(ianc) !=ianc4iano(janc))
+C=""La crise économique" ou "Le scénario comique" ?"
+O=""mc"Lié aqn? uacerr"ii oso euc  oé"mcLioeqn uose
+E=
+                      "ii 
+      "Lié
+                                   oé"m
+           aq
+                   err
+                                                ose
+                              eu
+                                c  
+             n? 
+                                       cLi
+                uac
+                                          oeq
+   "mc
+                                             n u
+                          oso
+E[0]=""ii "
+E[1]=""Lié"
+E[2]="oé"m"
+E[3]=" aq"
+E[4]="err"
+E[5]="ose"
+E[6]=" eu"
+E[7]="c  "
+E[8]="n? "
+E[9]="cLi"
+E[10]="uac"
+E[11]="oeq"
+E[12]=""mc"
+E[13]="n u"
+E[14]="oso"
+É=""La crise économique" ou "Le scénario comique" ?"
+BUILD SUCCESSFUL (total time: 42 seconds)
+*/
